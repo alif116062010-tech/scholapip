@@ -1,1 +1,563 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>ScholaPip | Try Out TIU</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #080d18;
+    color: white;
+    min-height: 100vh;
+}
+
+header {
+    padding: 22px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #1e293b;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    color: #60a5fa;
+}
+
+.badge {
+    color: #93c5fd;
+    background: #14233b;
+    padding: 9px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+.home {
+    min-height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.hero {
+    max-width: 650px;
+}
+
+.label {
+    display: inline-block;
+    background: #14233b;
+    color: #60a5fa;
+    padding: 10px 17px;
+    border-radius: 30px;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+h1 {
+    font-size: clamp(42px, 8vw, 72px);
+    margin-bottom: 20px;
+}
+
+h1 span {
+    color: #60a5fa;
+}
+
+.description {
+    color: #a7b3c7;
+    font-size: 17px;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 15px 32px;
+    transition: 0.2s;
+}
+
+.btn-primary {
+    background: #2563eb;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #3b82f6;
+    transform: translateY(-2px);
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 35px;
+}
+
+.feature {
+    background: #111c2e;
+    border: 1px solid #26354d;
+    padding: 13px 17px;
+    border-radius: 10px;
+    color: #cbd5e1;
+    font-size: 14px;
+}
+
+.page {
+    display: none;
+    max-width: 850px;
+    margin: auto;
+    padding: 35px 20px;
+}
+
+.card {
+    background: #111c2e;
+    border: 1px solid #26354d;
+    padding: 25px;
+    border-radius: 16px;
+    margin-top: 20px;
+}
+
+.top-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    color: #93c5fd;
+    margin-bottom: 20px;
+}
+
+.progress {
+    height: 7px;
+    background: #26354d;
+    border-radius: 10px;
+    margin: 15px 0 25px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #3b82f6;
+    transition: 0.3s;
+}
+
+#question {
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 22px;
+}
+
+.option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin: 10px 0;
+    background: #17253a;
+    border: 1px solid #34445d;
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: normal;
+}
+
+.option:hover {
+    border-color: #60a5fa;
+}
+
+.option.selected {
+    background: #173b70;
+    border-color: #60a5fa;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.secondary {
+    background: #26354d;
+    color: white;
+}
+
+#result {
+    display: none;
+    text-align: center;
+    padding: 30px 10px;
+}
+
+.score {
+    font-size: 65px;
+    color: #60a5fa;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #64748b;
+    font-size: 13px;
+}
+
+@media(max-width: 500px) {
+    header {
+        padding: 18px 5%;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .navigation button {
+        padding: 13px 17px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">ScholaPip.</div>
+    <div class="badge">TRY OUT TIU</div>
+</header>
+
+<!-- HALAMAN DEPAN -->
+<section class="home" id="home">
+    <div class="hero">
+        <div class="label">PLATFORM LATIHAN SOAL</div>
+
+        <h1>Selamat Datang di<br><span>ScholaPip</span></h1>
+
+        <p class="description">
+            Asah kemampuanmu, latih logikamu, dan persiapkan
+            dirimu menghadapi soal Tes Intelegensia Umum (TIU).
+            Mulai latihanmu sekarang!
+        </p>
+
+        <button class="btn-primary" onclick="startQuiz()">
+            Masuk →
+        </button>
+
+        <div class="features">
+            <div class="feature">🧠 Latihan TIU</div>
+            <div class="feature">⏱️ Timer Otomatis</div>
+            <div class="feature">📊 Nilai Otomatis</div>
+        </div>
+    </div>
+</section>
+
+<!-- HALAMAN TRY OUT -->
+<section class="page" id="quizPage">
+
+    <div class="top-info">
+        <span>ScholaPip / Try Out TIU</span>
+        <span>Waktu: <b id="timer">15:00</b></span>
+    </div>
+
+    <div class="card" id="quizCard">
+
+        <div class="top-info">
+            <span id="number">Soal 1 dari 10</span>
+            <span>Pilih satu jawaban</span>
+        </div>
+
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <h2 id="question"></h2>
+
+        <div id="options"></div>
+
+        <div class="navigation">
+            <button class="secondary" onclick="previousQuestion()">
+                ← Kembali
+            </button>
+
+            <button class="btn-primary" id="nextButton"
+                onclick="nextQuestion()">
+                Selanjutnya →
+            </button>
+        </div>
+    </div>
+
+    <div class="card" id="result">
+        <h2>Try Out Selesai!</h2>
+        <p>Ini hasil latihan TIU kamu.</p>
+
+        <div class="score" id="score">0</div>
+
+        <p id="correctText"></p>
+        <p id="wrongText" style="margin-top:10px"></p>
+
+        <br>
+
+        <button class="btn-primary" onclick="restartQuiz()">
+            Ulangi Try Out
+        </button>
+
+        <br><br>
+
+        <button class="secondary" onclick="goHome()">
+            Kembali ke Beranda
+        </button>
+    </div>
+</section>
+
+<footer>
+    © 2026 ScholaPip — Belajar, Berlatih, Berprestasi.
+</footer>
+
+<script>
+const questions = [
+    {
+        q: "1. Sinonim kata ABSAH adalah ...",
+        options: ["A. Tidak sah", "B. Sah", "C. Rusak", "D. Batal", "E. Salah"],
+        answer: 1
+    },
+    {
+        q: "2. Antonim kata OPTIMIS adalah ...",
+        options: ["A. Yakin", "B. Semangat", "C. Pesimis", "D. Percaya", "E. Berani"],
+        answer: 2
+    },
+    {
+        q: "3. Semua siswa rajin belajar. Budi adalah siswa. Kesimpulan yang tepat adalah ...",
+        options: [
+            "A. Budi tidak belajar",
+            "B. Budi rajin belajar",
+            "C. Semua siswa adalah Budi",
+            "D. Budi bukan siswa",
+            "E. Tidak dapat disimpulkan"
+        ],
+        answer: 1
+    },
+    {
+        q: "4. 2, 4, 8, 16, 32, ... Angka berikutnya adalah ...",
+        options: ["A. 36", "B. 48", "C. 54", "D. 64", "E. 72"],
+        answer: 3
+    },
+    {
+        q: "5. 5, 10, 17, 26, 37, ... Angka berikutnya adalah ...",
+        options: ["A. 46", "B. 48", "C. 50", "D. 52", "E. 54"],
+        answer: 2
+    },
+    {
+        q: "6. Jika 3x + 5 = 20, nilai x adalah ...",
+        options: ["A. 3", "B. 4", "C. 5", "D. 6", "E. 7"],
+        answer: 2
+    },
+    {
+        q: "7. Sebuah barang seharga Rp80.000 mendapat diskon 25%. Harga setelah diskon adalah ...",
+        options: [
+            "A. Rp20.000",
+            "B. Rp40.000",
+            "C. Rp55.000",
+            "D. Rp60.000",
+            "E. Rp65.000"
+        ],
+        answer: 3
+    },
+    {
+        q: "8. Dokter : Rumah Sakit = Guru : ...",
+        options: [
+            "A. Pasar",
+            "B. Sekolah",
+            "C. Terminal",
+            "D. Kantor Pos",
+            "E. Apotek"
+        ],
+        answer: 1
+    },
+    {
+        q: "9. Semua bunga membutuhkan air. Mawar adalah bunga. Kesimpulannya adalah ...",
+        options: [
+            "A. Mawar membutuhkan air",
+            "B. Mawar tidak membutuhkan air",
+            "C. Semua air adalah bunga",
+            "D. Mawar adalah air",
+            "E. Tidak ada kesimpulan"
+        ],
+        answer: 0
+    },
+    {
+        q: "10. Perbandingan uang Andi dan Budi adalah 2 : 3. Jika jumlah uang mereka Rp50.000, uang Budi adalah ...",
+        options: [
+            "A. Rp10.000",
+            "B. Rp15.000",
+            "C. Rp20.000",
+            "D. Rp25.000",
+            "E. Rp30.000"
+        ],
+        answer: 4
+    }
+];
+
+let current = 0;
+let answers = Array(questions.length).fill(null);
+let timeLeft = 900;
+let timerInterval;
+
+function startQuiz() {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("quizPage").style.display = "block";
+
+    current = 0;
+    answers = Array(questions.length).fill(null);
+    timeLeft = 900;
+
+    clearInterval(timerInterval);
+
+    showQuestion();
+    updateTimer();
+
+    timerInterval = setInterval(() => {
+        timeLeft--;
+        updateTimer();
+
+        if (timeLeft <= 0) {
+            finishQuiz();
+        }
+    }, 1000);
+
+    window.scrollTo(0, 0);
+}
+
+function showQuestion() {
+    const item = questions[current];
+
+    document.getElementById("number").textContent =
+        Soal ${current + 1} dari ${questions.length};
+
+    document.getElementById("question").textContent = item.q;
+
+    document.getElementById("progressBar").style.width =
+        ((current + 1) / questions.length * 100) + "%";
+
+    const options = document.getElementById("options");
+    options.innerHTML = "";
+
+    item.options.forEach((option, index) => {
+        const button = document.createElement("button");
+
+        button.className = "option";
+        button.textContent = option;
+
+        if (answers[current] === index) {
+            button.classList.add("selected");
+        }
+
+        button.onclick = () => {
+            answers[current] = index;
+            showQuestion();
+        };
+
+        options.appendChild(button);
+    });
+
+    document.getElementById("nextButton").textContent =
+        current === questions.length - 1
+            ? "Selesai ✓"
+            : "Selanjutnya →";
+
+    document.querySelector("#quizCard .navigation button:first-child")
+        .disabled = current === 0;
+}
+
+function nextQuestion() {
+    if (answers[current] === null) {
+        alert("Pilih jawaban terlebih dahulu!");
+        return;
+    }
+
+    if (current < questions.length - 1) {
+        current++;
+        showQuestion();
+    } else {
+        finishQuiz();
+    }
+}
+
+function previousQuestion() {
+    if (current > 0) {
+        current--;
+        showQuestion();
+    }
+}
+
+function updateTimer() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+
+    document.getElementById("timer").textContent =
+        String(minutes).padStart(2, "0") + ":" +
+        String(seconds).padStart(2, "0");
+}
+
+function finishQuiz() {
+    clearInterval(timerInterval);
+
+    let correct = 0;
+
+    questions.forEach((question, index) => {
+        if (answers[index] === question.answer) {
+            correct++;
+        }
+    });
+
+    const score = Math.round(correct / questions.length * 100);
+
+    document.getElementById("quizCard").style.display = "none";
+    document.getElementById("result").style.display = "block";
+
+    document.getElementById("score").textContent = score;
+    document.getElementById("correctText").textContent =
+        "Jawaban benar: " + correct + " dari " + questions.length;
+
+    document.getElementById("wrongText").textContent =
+        "Jawaban salah atau kosong: " +
+        (questions.length - correct);
+
+    window.scrollTo(0, 0);
+}
+
+function restartQuiz() {
+    document.getElementById("quizCard").style.display = "block";
+    document.getElementById("result").style.display = "none";
+    startQuiz();
+}
+
+function goHome() {
+    clearInterval(timerInterval);
+
+    document.getElementById("quizPage").style.display = "none";
+    document.getElementById("home").style.display = "flex";
+
+    window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+</html>
